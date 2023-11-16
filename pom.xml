@@ -22,6 +22,7 @@
         <dataurl.version>2.0.0</dataurl.version>
         <knife4j.verison>4.1.0</knife4j.verison>
         <user-agent-utils.verison>1.21</user-agent-utils.verison>
+        <spring-azure-cloud.version>4.12.0</spring-azure-cloud.version>
         <httpclient.verison>4.5.14</httpclient.verison>
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -105,6 +106,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.azure.spring</groupId>
+            <artifactId>spring-cloud-azure-starter-keyvault</artifactId>
+            <version>${spring-azure-cloud.version}</version>
         </dependency>
     </dependencies>
 
