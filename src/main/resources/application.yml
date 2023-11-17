@@ -1,7 +1,7 @@
 mj:
   task-store:
-    type: in_memory
-    timeout: 3d
+    type: redis
+    timeout: 10d
   api-secret: ${MJ-PROXY-API-SECRET}
   translate-way: gpt
   openai:
@@ -26,3 +26,6 @@ spring:
         secret:
           property-sources:
             - endpoint: ${AZURE_LAB_KV_ENDPOINT}
+  redis:
+    host: 10.0.0.4
+    port: 6379
