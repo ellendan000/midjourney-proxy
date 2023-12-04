@@ -1,0 +1,26 @@
+mj:
+  task-store:
+    type: in_memory
+  api-secret: ${MJ_PROXY_API_SECRET}
+  translate-way: gpt
+  openai:
+    gpt-api-key: ${OPENAI_API_KEY}
+    timeout: 30
+    model: gpt-3.5-turbo
+    max-tokens: 2048
+    temperature: 0
+  accounts:
+    - guild-id: ${DISCORD_SERVER_ID}
+      channel-id: ${DISCORD_CHANNEL_ID}
+      user-token: ${DISCORD_USER_TOKEN}
+      user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36
+      core-size: 3
+      queue-size: 10
+      timeout-minutes: 5
+
+spring:
+  cloud:
+    azure:
+      keyvault:
+        enabled: false
+

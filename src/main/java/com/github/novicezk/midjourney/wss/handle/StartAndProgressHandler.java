@@ -55,6 +55,8 @@ public class StartAndProgressHandler extends MessageHandler {
 			task.setProgress(parseData.getStatus());
 			String imageUrl = getImageUrl(message);
 			task.setImageUrl(imageUrl);
+			String thumbnailImageUrl = getThumbnailImageUrl(message);
+			task.setThumbnailImageUrl(thumbnailImageUrl);
 			task.setProperty(Constants.TASK_PROPERTY_MESSAGE_HASH, this.discordHelper.getMessageHash(imageUrl));
 			task.awake();
 		}

@@ -20,6 +20,8 @@ mj:
       timeout-minutes: 5
 
 spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:default}
   cloud:
     azure:
       keyvault:

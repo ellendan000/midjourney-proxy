@@ -46,6 +46,8 @@ public abstract class MessageHandler {
 		task.setProperty(Constants.TASK_PROPERTY_FINAL_PROMPT, finalPrompt);
 		task.setProperty(Constants.TASK_PROPERTY_MESSAGE_HASH, messageHash);
 		task.setImageUrl(imageUrl);
+		String thumbnailImageUrl = getThumbnailImageUrl(message);
+		task.setThumbnailImageUrl(thumbnailImageUrl);
 		finishTask(task, message);
 		task.awake();
 	}
@@ -67,6 +69,15 @@ public abstract class MessageHandler {
 		if (!attachments.isEmpty()) {
 			String imageUrl = attachments.getObject(0).getString("url");
 			return replaceCdnUrl(imageUrl);
+		}
+		return null;
+	}
+
+	protected String getThumbnailImageUrl(DataObject message) {
+		DataArray attachments = message.getArray("attachments");
+		if (!attachments.isEmpty()) {
+			String thumbnailImageUrl = attachments.getObject(0).getString("proxy_url");
+			return thumbnailImageUrl + DiscordHelper.THUMBNAIL_IMAGE_URL_SUFFIX;
 		}
 		return null;
 	}

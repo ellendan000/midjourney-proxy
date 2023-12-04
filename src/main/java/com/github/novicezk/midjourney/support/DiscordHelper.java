@@ -26,6 +26,9 @@ public class DiscordHelper {
 	 */
 	public static final String DISCORD_UPLOAD_URL = "https://discord-attachments-uploads-prd.storage.googleapis.com";
 
+	public static final String THUMBNAIL_IMAGE_URL_SUFFIX = "=&format=webp&width=700&height=700";
+
+
 	public String getServer() {
 		if (CharSequenceUtil.isBlank(this.properties.getNgDiscord().getServer())) {
 			return DISCORD_SERVER_URL;
