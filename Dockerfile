@@ -17,8 +17,8 @@ RUN groupadd -g 1000 ${group} \
 USER ${user}
 WORKDIR $SPRING_HOME
 
-RUN ls -a
 COPY . .
+RUN ls -a
 
 RUN mvn clean git-commit-id:revision spring-boot:build-info package \
     && mv target/midjourney-proxy-*.jar ./app.jar \
