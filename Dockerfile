@@ -19,7 +19,7 @@ WORKDIR $SPRING_HOME
 
 COPY . .
 
-RUN mvn clean package \
+RUN mvn clean git-commit-id:revision spring-boot:build-info package \
     && mv target/midjourney-proxy-*.jar ./app.jar \
     && rm -rf target
 

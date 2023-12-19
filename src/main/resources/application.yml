@@ -31,3 +31,19 @@ spring:
   redis:
     host: 10.0.0.4
     port: 6379
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+    metrics:
+      enable: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
