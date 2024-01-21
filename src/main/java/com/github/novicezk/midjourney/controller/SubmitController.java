@@ -66,9 +66,9 @@ public class SubmitController {
 		Task task = newTask(imagineDTO);
 		task.setAction(TaskAction.IMAGINE);
 		task.setPrompt(prompt);
-		String promptEn = translatePrompt(prompt);
+		String promptEn = null;
 		try {
-			BannedPromptUtils.checkBanned(promptEn);
+			promptEn = translatePrompt(prompt);
 		} catch (BannedPromptException e) {
 			return SubmitResultVO.fail(ReturnCode.BANNED_PROMPT, "可能包含敏感词")
 					.setProperty("promptEn", promptEn).setProperty("bannedWord", e.getMessage());
@@ -215,7 +215,7 @@ public class SubmitController {
 		return task;
 	}
 
-	private String translatePrompt(String prompt) {
+	private String translatePrompt(String prompt) throws BannedPromptException {
 		if (TranslateWay.NULL.equals(this.properties.getTranslateWay()) || CharSequenceUtil.isBlank(prompt)) {
 			return prompt;
 		}
@@ -234,6 +234,7 @@ public class SubmitController {
 		if (CharSequenceUtil.isNotBlank(text)) {
 			text = this.translateService.translateToEnglish(text).trim();
 		}
+		BannedPromptUtils.checkBanned(text);
 		return imageStr + text + paramStr;
 	}
 
