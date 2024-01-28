@@ -5,7 +5,7 @@ mj:
   api-secret: ${MJ-PROXY-API-SECRET}
   translate-way: gpt
   openai:
-    gpt-api-key: ${OPENAI-API-KEY}
+    gpt-api-key: ${OPENAI-API-OFFICIAL-KEY}
     timeout: 30
     model: gpt-3.5-turbo
     max-tokens: 2048
