@@ -29,8 +29,9 @@ spring:
           property-sources:
             - endpoint: ${AZURE_LAB_KV_ENDPOINT}
   redis:
-    host: ${REDIS-HOST}
+    host: ${REMOTE-REDIS-HOST}
     port: ${REDIS-PORT}
+    username: ${REDIS-USERNAME}
     password: ${REDIS-PASSWORD}
 
 management:
