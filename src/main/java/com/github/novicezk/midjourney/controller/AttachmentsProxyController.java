@@ -23,6 +23,7 @@ public class AttachmentsProxyController {
   @GetMapping("/**")
   public ResponseEntity<byte[]> getImages(HttpServletRequest request) {
     String originUrl = request.getServletPath();
+    originUrl = originUrl.replaceFirst("/attachments", "");
     String originQueryString = request.getQueryString();
     String targetDomain = "";
 

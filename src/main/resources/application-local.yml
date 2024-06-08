@@ -1,6 +1,7 @@
 mj:
   task-store:
-    type: in_memory
+    type: redis
+    timeout: 10d
   api-secret: ${MJ_PROXY_API_SECRET}
   translate-way: gpt
   openai:
