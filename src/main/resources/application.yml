@@ -31,6 +31,7 @@ spring:
   redis:
     host: ${VM-REDIS-HOST}
     port: ${VM-REDIS-PORT}
+    username: ${VM-REDIS-USERNAME}
     password: ${VM-REDIS-PASSWORD}
     lettuce:
       pool:
