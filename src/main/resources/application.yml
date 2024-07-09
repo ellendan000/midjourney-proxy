@@ -29,10 +29,10 @@ spring:
           property-sources:
             - endpoint: ${AZURE_LAB_KV_ENDPOINT}
   redis:
-    host: ${VM-REDIS-HOST}
-    port: ${VM-REDIS-PORT}
-    username: ${VM-REDIS-USERNAME}
-    password: ${VM-REDIS-PASSWORD}
+    host: ${REDIS-HOST}
+    port: ${REDIS-PORT}
+    username: ${REDIS-USERNAME}
+    password: ${REDIS-PASSWORD}
     lettuce:
       pool:
         max-active: 20
