@@ -76,7 +76,6 @@ public class NotifyServiceImpl implements NotifyService {
 	private ResponseEntity<String> postJson(String notifyHook, String paramsJson) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.add(Constants.API_SECRET_HEADER_NAME, this.properties.getApiSecret());
 		HttpEntity<String> httpEntity = new HttpEntity<>(paramsJson, headers);
 		return new RestTemplate().postForEntity(notifyHook, httpEntity, String.class);
 	}
