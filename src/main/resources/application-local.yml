@@ -24,7 +24,12 @@ spring:
     azure:
       keyvault:
         enabled: false
+        secret:
+          property-sources:
+            - endpoint: ""
   redis:
     host: localhost
     port: 6379
+    username: root
+    password: 123456
 

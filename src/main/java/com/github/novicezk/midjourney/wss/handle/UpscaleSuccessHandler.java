@@ -67,6 +67,8 @@ public class UpscaleSuccessHandler extends MessageHandler {
 		message.put(Constants.MJ_MESSAGE_HANDLED, true);
 		task.setProperty(Constants.TASK_PROPERTY_FINAL_PROMPT, finalPrompt);
 		task.setProperty(Constants.TASK_PROPERTY_MESSAGE_HASH, messageHash);
+		String thumbnailImageUrl = getThumbnailImageUrl(message);
+		task.setThumbnailImageUrl(thumbnailImageUrl);
 		task.setImageUrl(imageUrl);
 		finishTask(task, message);
 		task.awake();
