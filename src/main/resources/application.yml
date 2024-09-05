@@ -42,7 +42,7 @@ spring:
 
 internal:
   service:
-    api-secret: ${MJ-PROXY-API-SECRET}
+    api-secret: ${INTERNAL-SERVICE-SECRET}
 
 management:
   info:
