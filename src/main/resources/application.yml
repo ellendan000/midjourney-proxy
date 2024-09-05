@@ -40,6 +40,10 @@ spring:
         min-idle: 5
         max-wait: 5s
 
+internal:
+  service:
+    api-secret: ${MJ-PROXY-API-SECRET}
+
 management:
   info:
     env:

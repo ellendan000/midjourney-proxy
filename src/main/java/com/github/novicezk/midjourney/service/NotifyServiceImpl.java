@@ -12,6 +12,7 @@ import com.github.novicezk.midjourney.enums.TaskStatus;
 import com.github.novicezk.midjourney.support.Task;
 import com.github.novicezk.midjourney.util.ThreadPoolUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -28,6 +29,9 @@ public class NotifyServiceImpl implements NotifyService {
 	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 	private final ThreadPoolExecutor executor;
 	private final TimedCache<String, String> taskStatusMap = CacheUtil.newTimedCache(Duration.ofHours(1).toMillis());
+
+	@Value("${internal.service.api-secret}")
+	private String internalServiceApiSecret;
 
 	public NotifyServiceImpl(ProxyProperties properties) {
 		this.executor = ThreadPoolUtils.newFixedThreadPool("TaskNotify-", properties.getNotifyPoolSize());
@@ -75,6 +79,7 @@ public class NotifyServiceImpl implements NotifyService {
 
 	private ResponseEntity<String> postJson(String notifyHook, String paramsJson) {
 		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", this.internalServiceApiSecret);
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> httpEntity = new HttpEntity<>(paramsJson, headers);
 		return new RestTemplate().postForEntity(notifyHook, httpEntity, String.class);
